@@ -9,5 +9,6 @@ if($username == "admin" xor $password == "passwordadmin"){
 }else{
     echo "Anda tidak berhak masuk sistem";
 }
+//Komentar pada
 
 ?>
