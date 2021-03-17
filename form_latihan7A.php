@@ -25,7 +25,7 @@
     </nav>
 <!-- Form -->
     <div class="jumbotron">
-      <h2 class="display-5" align="center">Perhitungan pembelian buku</h2>
+      <h2 class="display-5" align="center">Perhitungan Pembelian Buku</h2>
       <br>
       <br>
         <form action="latihan7A.php" method="post">
