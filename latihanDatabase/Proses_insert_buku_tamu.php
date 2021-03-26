@@ -1,5 +1,7 @@
 <?php
     require_once "MySQL_connection.php";
+    // start session
+    session_start();
 
     $nama = $_POST['nama'];
     $email = $_POST['email'];
@@ -10,18 +12,23 @@
 
     //Eksekusi Perintah
     if($conn->query($sql) === true){
-        // header("location:Halaman_buku_tamu.php");
-        echo "<script>
-        alert('Berhasil Tersimpan');
-        location.assign('Halaman_buku_tamu.php');
+        $_SESSION['insert_status'] = 1;
+        $_SESSION['alert_status'] = 'alert alert-warning alert-dismissible fade show';
+        $_SESSION['insert_message'] = '<strong>Berhasil!!</strong> Data berhasil disimpan';
+        header("location:Halaman_buku_tamu.php");
+        // echo "<script>
+        // alert('Berhasil Tersimpan');
+        // location.assign('Halaman_buku_tamu.php');
 
-        </script>";
+        // </script>";
     }else {
-        echo "<script>
-        alert(' Gagal Berhasil Tersimpan');
-        location.assign('Halaman_buku_tamu.php');
+        $_SESSION['insert_status'] = 1;
+        $_SESSION['alert_status'] = 'alert alert-danger alert-dismissible fade show';
+        $_SESSION['insert_message'] = '<strong>Gagal!!</strong> Data Gagal disimpan.';
+        header("location:Halaman_buku_tamu.php");
+        // echo "<script>
+        // alert(' Gagal Berhasil Tersimpan');
+        // location.assign('Halaman_buku_tamu.php');
 
-        </script>";
+        // </script>";
     }
-
-?>

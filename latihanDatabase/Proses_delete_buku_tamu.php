@@ -1,5 +1,6 @@
 <?php
     require_once "MySQL_connection.php";
+    session_start();
 
 $id = $_GET['idTamu'];
 
@@ -8,18 +9,25 @@ $id = $_GET['idTamu'];
 
     //Eksekusi Perintah
     if($conn->query($sql) === true){
-        // header("location:Halaman_buku_tamu.php");
-        echo "<script>
-        alert('Berhasil Terhapus');
-        location.assign('Halaman_buku_tamu.php');
+        $_SESSION['delete_status'] = 1;
+        $_SESSION['alert_status'] = 'alert alert-warning alert-dismissible fade show';
+        $_SESSION['alert_message'] = '<strong>Berhasil!!</strong> Data berhasil dihapus';
+        header("location:Halaman_buku_tamu.php");
+        // echo "<script>
+        // alert('Berhasil Terhapus');
+        // location.assign('Halaman_buku_tamu.php');
 
-        </script>";
+        // </script>";
     }else {
-        echo "<script>
-        alert(' Gagal Terhapus');
-        location.assign('Halaman_buku_tamu.php');
+        $_SESSION['delete_status'] = 1;
+        $_SESSION['alert_status'] = 'alert alert-danger alert-dismissible fade show';
+        $_SESSION['alert_message'] = '<strong>Gagal!!</strong> Data gagal dihapus';
+        header("location:Halaman_buku_tamu.php");
+        // echo "<script>
+        // alert(' Gagal Terhapus');
+        // location.assign('Halaman_buku_tamu.php');
 
-        </script>";
+        // </script>";
     }
 
 ?>
