@@ -1,6 +1,9 @@
 <?php
 require_once "MySQL_connection.php";
 session_start();
+if(!isset($_SESSION['login'])){
+    header("location: Halaman_login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +19,11 @@ session_start();
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
 </head>
-
 <body>
+<!-- Navbar Logout -->
+    <nav class="navbar navbar-light bg-warning">
+        <a class="navbar-brand" href="Proses_logout.php">Logout</a>
+    </nav>
 <!-- Alert Insert-->
     <?php
         if (isset($_SESSION["insert_status"])) {
@@ -34,7 +40,7 @@ session_start();
     <!-- Jumbotron + Form input Buku Tamu -->
     <div align="center">
         <div class="jumbotron" style="max-width: 47rem;">
-            <h2 class="display-5 bg-warning" align="center">Form Input Buku Tamu</h2>
+            <h2 class="display-5" align="center">Form Input Buku Tamu</h2>
             <br>
             <br>
             <form action="Proses_insert_buku_tamu.php" method="post">
