@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Models\Article;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArticleController@index');
+Route::post('/store', 'ArticleController@store');
+Route::get('/user','ArticleController@user');
+Route::get('/search','ArticleController@search');
+Route::get('/show/{id}','ArticleController@show');
+Route::get('/delete/{id}', 'ArticleController@destroy');
+Route::post('/update', 'ArticleController@update');
